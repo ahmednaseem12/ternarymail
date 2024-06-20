@@ -1,61 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Form</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <style>
-        .container {
-            max-width: 600px;
-            margin-top: 50px;
+      .ternary-contact-form2 {
+        width: 1000px;
+        height: auto;
+        background-color: #13111a !important;
+        border: 2px solid rgba(255, 255, 255, 0.16);
+        border-radius: 20px;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+        padding: 40px 30px;
+      }
+
+      label {
+        font-size: 18px;
+        font-family: Thicccboi, sans-serif !important;
+        margin-bottom: 11px;
+        margin-left: 7px;
+        font-weight: 700;
+        line-height: 1.333em;
+        display: block;
+        color: rgb(217, 215, 230);
+      }
+
+      .first-row-col {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .ter-row {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .ter-contact-row-1-main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .ter-col-50 {
+        width: 50%;
+      }
+
+      .ternary-contact-form2 input {
+        width: 98%;
+        min-height: 56px;
+        background-color: #302c3f;
+        color: rgb(255, 255, 255);
+        border: 0 solid #000;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
+        font-size: 18px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .ternary-contact-form2 input::placeholder {
+        font-size: 18px;
+        font-family: Thicccboi, sans-serif !important;
+        margin-bottom: 11px;
+        margin-left: 7px;
+        font-weight: 500;
+        line-height: 1.333em;
+        color: rgb(217, 215, 230);
+      }
+
+      .ternary-contact-form2 input:hover {
+        background-color: #1d1a27;
+      }
+
+      #email {
+        width: 99% !important;
+      }
+
+      .ternary-contact-form2 input:focus {
+        background-color: #1d1a27;
+        outline: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .ternary-contact-form2 select {
+        width: 98%;
+        min-height: 56px;
+        background-color: #302c3f;
+        color: rgb(255, 255, 255);
+        border: 0 solid #000;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        padding-left: 24px;
+        padding-right: 24px;
+        font-size: 18px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .ternary-contact-form2 select:hover {
+        background-color: #1d1a27;
+      }
+
+      .ternary-contact-form2 select:focus {
+        background-color: #1d1a27;
+        outline: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .ter-submit {
+        transform-style: preserve-3d;
+        background-image: linear-gradient(
+          to right,
+          #f16a77,
+          #b372ce 49%,
+          #ff7586
+        );
+        border-radius: 10000px;
+        padding: 2px;
+        transition: transform 0.3s;
+        display: inline-block;
+        transform: scale3d(1, 1, 1.01);
+        box-shadow: 0 3px 7px rgba(19, 17, 26, 0.14);
+        height: 60px;
+        width: 150px;
+        margin-top: 30px;
+      }
+
+      .ter-submit:hover {
+        transform: scale(1.05);
+        transition: ease-in-out 0.5s;
+        cursor: pointer;
+      }
+
+      .ter-submit input {
+        width: 100%;
+        background-color: #13111a;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        letter-spacing: 0.01em;
+        border-radius: 1000px;
+        padding: 15px 28px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.111em;
+        height: 55px;
+      }
+
+      .ter-submit input:hover {
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 768px) {
+        .ternary-contact-form2 {
+          width: 725px;
         }
-        .form-group {
-            margin-bottom: 15px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .ternary-contact-form2 {
+          width: 90%;
+          height: auto;
+          padding: 40px 15px;
         }
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1055;
+
+        .ter-contact-row-1-main {
+          flex-direction: column;
         }
+
+        .ter-col-50 {
+          width: 100%;
+        }
+
+        .ter-submit {
+          width: 100%;
+        }
+
+        .ternary-contact-form2 select {
+          width: 100%;
+        }
+
+        .ternary-contact-form2 input {
+          width: 100%;
+        }
+
+        #email {
+          width: 100%;
+        }
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="mb-4">User Information Form</h1>
-        <form id="userForm">
-            <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="discord">Do You Have Discord?</label>
-                <input type="text" class="form-control" id="discord" name="discord" required>
-            </div>
-            <div class="form-group">
-                <label for="demo">Want A Demo?</label>
-                <input type="text" class="form-control" id="demo" name="demo" required>
-            </div>
-            <div class="form-group">
-                <label for="hear">How did you hear about us?</label>
-                <input type="text" class="form-control" id="hear" name="hear" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+  </head>
 
-    <div id="toastContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+  <body>
+    <section class="ter-contact-form">
+      <div class="ter-container">
+        <div class="ter-row">
+          <div class="ter-contact-main">
+            <form
+              class="ternary-contact-form2"
+              id="ternary-ct-form"
+              action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DSu000000AIN3"
+              method="POST"
+            >
+              <input type="hidden" name="oid" value="00DSu000000AIN3" />
+              <input
+                type="hidden"
+                name="retURL"
+                value="https://www.ternarydev.com/contact"
+              />
+              <div class="ter-row">
+                <div class="ter-contact-row-1-main">
+                  <div class="ter-col-50">
+                    <label for="first_name">First Name *</label>
+                    <input
+                      id="first_name"
+                      maxlength="40"
+                      name="first_name"
+                      size="20"
+                      placeholder="First Name"
+                      type="text"
+                      required
+                    />
+                  </div>
+                  <div class="ter-col-50">
+                    <label for="last_name">Last Name *</label>
+                    <input
+                      id="last_name"
+                      maxlength="80"
+                      name="last_name"
+                      size="20"
+                      placeholder="Last Name"
+                      type="text"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <label for="email">Email *</label>
+              <input
+                id="email"
+                maxlength="80"
+                name="email"
+                size="20"
+                placeholder="example@email.com"
+                type="text"
+                required
+              />
+              <div class="ter-row">
+                <div class="ter-contact-row-1-main">
+                  <div class="ter-col-50">
+                    <label for="discord-selction">Do You Have Discord? *</label>
+                    <select
+                      id="00NSu000000IwNJ"
+                      name="00NSu000000IwNJ"
+                      title="Do You Have Discord?"
+                      required
+                    >
+                      <option value="">Please Select</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option></select
+                    ><br />
+                  </div>
+                  <div class="ter-col-50">
+                    <label for="demo">Want A Demo? *</label>
+                    <select
+                      id="00NSu000000IwWz"
+                      name="00NSu000000IwWz"
+                      title="Want A Demo?"
+                      required
+                    >
+                      <option value="">Please Select</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option></select
+                    ><br />
+                  </div>
+                </div>
+              </div>
+              <div class="ter-row">
+                <div class="ter-contact-row-1-main">
+                  <div class="ter-col-50">
+                    <label for="hear-about-us"
+                      >How did you hear about us? *</label
+                    >
+                    <input
+                      id="00NSu000000Iwbp"
+                      maxlength="255"
+                      name="00NSu000000Iwbp"
+                      size="20"
+                      type="text"
+                      required
+                    />
+                  </div>
+                  <div class="ter-col-50">
+                    <label for="url">Website</label>
+                    <input
+                      id="url"
+                      maxlength="80"
+                      name="url"
+                      size="20"
+                      type="text"
+                    /><br />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="g-recaptcha"
+                data-sitekey="6LdjxP0pAAAAAJDHSjYkva_dJpmcr0H0dR9zTGrj                "
+                data-callback="onReCaptchaSuccess"
+                data-expired-callback="onReCaptchaExpired"
+              ></div>
+              <input
+                type="hidden"
+                id="ipAddress"
+                name="ipAddress"
+                value="123.456.789.0"
+              />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+              <div class="ter-submit">
+                <input
+                  class="button-primary"
+                  id="tersubmitBtn"
+                  type="submit"
+                  name="submit"
+                  value="Apply"
+                />
+              </div>
+              <!-- <div id="successMessage" style="display: none; width:90% !important; margin-top: 20px;">
+              <label for="successMessage" style="color: rgb(255, 255, 255); text-align: left;">Your message has been
+                submitted. We will get back to you within 24-48 hours.</label>
+            </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="toast-container" id="toastContainer"></div>
+    </section>
     <script src="script.js"></script>
-</body>
+
+  </body>
 </html>
